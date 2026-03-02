@@ -14,7 +14,7 @@ public class SilverBankAccountTest extends BankAccountTest {
     }
 
     @Override
-    protected int getFee() {
+    protected int getFee(int amount) {
         return this.FEE;
     }
 

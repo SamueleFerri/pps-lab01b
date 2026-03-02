@@ -9,11 +9,12 @@ public abstract class BankAccountTest {
     protected BankAccount account;
     private static final int START_DEPOSIT = 1000;
     private int fee = 0;
+    private int amount = 200;
 
     @BeforeEach
     void init() {
         this.account = this.getBankAccount();
-        this.fee = this.getFee();
+        this.fee = this.getFee(amount);
     }
 
     @Test
@@ -29,7 +30,6 @@ public abstract class BankAccountTest {
 
     @Test
     public void testCanWithdraw() {
-        int amount = 200;
         int expectedBalance = START_DEPOSIT - amount - this.fee;
         this.account.deposit(START_DEPOSIT);
         this.account.withdraw(amount);
@@ -38,5 +38,5 @@ public abstract class BankAccountTest {
 
     protected abstract BankAccount getBankAccount();
 
-    protected abstract int getFee();
+    protected abstract int getFee(int amount);
 }
