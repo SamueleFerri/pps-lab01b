@@ -41,4 +41,12 @@ public class LogicTest {
         logics.hit(knightPosX, knightPosY);
         assertTrue(logics.hasKnight(knightPosX, knightPosY));
     }
+
+    @Test
+    public void testKnightCapturePawn() {
+        knightPosX = PAWN.getX();
+        knightPosY = PAWN.getY();
+        assertTrue(logics.hit(knightPosX, knightPosY));
+        assertTrue(logics.hasKnight(knightPosX, knightPosY));
+    }
 }
