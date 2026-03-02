@@ -8,30 +8,37 @@ import static org.junit.jupiter.api.Assertions.*;
 public class LogicTest {
     private Logics logics;
     private static final int SIZE = 5;
-    private Pair<Integer, Integer> knight;
-    private Pair<Integer, Integer> pawn;
+    private static final Pair<Integer, Integer> PAWN = new Pair<>(1,2);;
+    private int knightPosX;
+    private int knightPosY;
 
     @BeforeEach
     public void init() {
-        knight = new Pair<>(0,0);
-        pawn = new Pair<>(1,2);
-        this.logics = new LogicsImpl(SIZE, knight, pawn);
+        this.logics = new LogicsImpl(SIZE, new Pair<>(knightPosX, knightPosY), PAWN);
     }
 
     @Test
     public void testInitialKnightPosition() {
-        assertTrue(logics.hasKnight(knight.getX(),knight.getY()));
+        assertTrue(logics.hasKnight(knightPosX, knightPosY));
     }
 
     @Test
     public void testInitialPawnPosition() {
-        assertTrue(logics.hasPawn(pawn.getX(),pawn.getY()));
+        assertTrue(logics.hasPawn(PAWN.getX(), PAWN.getY()));
     }
 
     @Test
     public void testInvalidKnightMove() {
-        int posX = 1;
-        int posY = 1;
-        assertFalse(logics.hasKnight(posX, posY));
+        knightPosX = 1;
+        knightPosY = 1;
+        assertFalse(logics.hasKnight(knightPosX, knightPosY));
+    }
+
+    @Test
+    public void testValidKnightMove() {
+        knightPosX = 2;
+        knightPosY = 1;
+        logics.hit(knightPosX, knightPosY);
+        assertTrue(logics.hasKnight(knightPosX, knightPosY));
     }
 }
