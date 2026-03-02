@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class GoldBankAccountTest {
     private GoldBankAccount account;
@@ -31,7 +32,7 @@ public class GoldBankAccountTest {
         int amount = 200;
         int expectedAmount = 800;
         this.account.deposit(START_DEPOSIT);
-        this.account.withdraw(200);
+        this.account.withdraw(amount);
         assertEquals(expectedAmount, this.account.getBalance());
     }
 
@@ -39,5 +40,11 @@ public class GoldBankAccountTest {
     public void testCanOverdraft(){
         this.account.withdraw(MAX_OVERDRAFT);
         assertEquals(-MAX_OVERDRAFT, this.account.getBalance());
+    }
+
+    @Test
+    public void testCannotWithDrawOverMaxOverdraft(){
+        int amount = 200;
+        assertThrows(IllegalStateException.class, () -> this.account.withdraw(MAX_OVERDRAFT + amount));
     }
 }
