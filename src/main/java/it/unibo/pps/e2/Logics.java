@@ -1,6 +1,6 @@
 package it.unibo.pps.e2;
 
-public interface Logics{
+public interface Logics {
     
     /**
      * attempt to move Knight on position row,col, if possible
