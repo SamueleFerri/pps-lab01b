@@ -27,4 +27,11 @@ public class LogicTest {
     public void testInitialPawnPosition() {
         assertTrue(logics.hasPawn(pawn.getX(),pawn.getY()));
     }
+
+    @Test
+    public void testInvalidKnightMove() {
+        int posX = 1;
+        int posY = 1;
+        assertFalse(logics.hasKnight(posX, posY));
+    }
 }
