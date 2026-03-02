@@ -49,4 +49,12 @@ public class LogicTest {
         assertTrue(logics.hit(knightPosX, knightPosY));
         assertTrue(logics.hasKnight(knightPosX, knightPosY));
     }
+
+    @Test
+    public void testHitOutOfBounds() {
+        knightPosX = -1;
+        knightPosY = 0;
+        assertThrows(IndexOutOfBoundsException.class, () -> logics.hit(knightPosX, knightPosY));
+        assertThrows(IndexOutOfBoundsException.class, () -> logics.hit(SIZE, SIZE));
+    }
 }
