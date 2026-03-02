@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class GoldBankAccountTest {
     private GoldBankAccount account;
     private static final int START_DEPOSIT = 1000;
+    private static final int MAX_OVERDRAFT = 500;
 
     @BeforeEach
     void init(){
@@ -32,5 +33,11 @@ public class GoldBankAccountTest {
         this.account.deposit(START_DEPOSIT);
         this.account.withdraw(200);
         assertEquals(expectedAmount, this.account.getBalance());
+    }
+
+    @Test
+    public void testCanOverdraft(){
+        this.account.withdraw(MAX_OVERDRAFT);
+        assertEquals(-MAX_OVERDRAFT, this.account.getBalance());
     }
 }
