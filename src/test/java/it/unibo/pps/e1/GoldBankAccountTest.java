@@ -6,34 +6,18 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class GoldBankAccountTest {
-    private GoldBankAccount account;
-    private static final int START_DEPOSIT = 1000;
+public class GoldBankAccountTest extends BankAccountTest {
     private static final int MAX_OVERDRAFT = 500;
+    private static final int FEE = 0;
 
-    @BeforeEach
-    void init(){
-        this.account = new GoldBankAccount(new CoreBankAccount());
+    @Override
+    protected BankAccount getBankAccount() {
+        return new GoldBankAccount(new CoreBankAccount());
     }
 
-    @Test
-    public void testInitiallyEmpty() {
-        assertEquals(0, this.account.getBalance());
-    }
-
-    @Test
-    public void testCanDeposit() {
-        this.account.deposit(START_DEPOSIT);
-        assertEquals(START_DEPOSIT, this.account.getBalance());
-    }
-
-    @Test
-    public void testCanWithdraw() {
-        int amount = 200;
-        int expectedAmount = 800;
-        this.account.deposit(START_DEPOSIT);
-        this.account.withdraw(amount);
-        assertEquals(expectedAmount, this.account.getBalance());
+    @Override
+    protected int getFee() {
+        return this.FEE;
     }
 
     @Test
