@@ -15,13 +15,19 @@ public class KnightTest {
     @BeforeEach
     void init() {
         knight = new KnightImpl(new Pair<>(positionX, positionY));
+        positionX = 2;
+        positionY = 1;
     }
 
     @Test
     public void testMoveKnight() {
-        positionX = 2;
-        positionY = 1;
         assertTrue(knight.checkMoveKnight(positionX, positionY));
+    }
+
+    @Test
+    public void testSetPositionKnight() {
+        knight.setKnight(positionX, positionY);
+        assertEquals(new Pair<>(positionX, positionY), knight.getKnight());
     }
 
 }
