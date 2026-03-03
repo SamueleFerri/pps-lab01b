@@ -8,9 +8,9 @@ public class KnightImpl implements Knight {
     }
 
     @Override
-    public void setKnight(int positionX, int positionY) {
-        if(checkMoveKnight(positionX, positionY)) {
-            this.knight = new Pair<>(positionX, positionY);
+    public void setKnight(Pair<Integer, Integer> knightPosition) {
+        if(checkMoveKnight(knightPosition)) {
+            this.knight = knightPosition;
         }else{
             throw new IllegalArgumentException();
         }
@@ -22,12 +22,9 @@ public class KnightImpl implements Knight {
     }
 
     @Override
-    public boolean checkMoveKnight(int positionX, int positionY) {
-        int x = positionX - this.knight.getX();
-        int y = positionY - this.knight.getY();
-        if (x!=0 && y!=0 && Math.abs(x)+Math.abs(y)==3) {
-            return true;
-        }
-        return false;
+    public boolean checkMoveKnight(Pair<Integer, Integer> knightPosition) {
+        int x = knightPosition.getX() - this.knight.getX();
+        int y = knightPosition.getY() - this.knight.getY();
+        return x!=0 && y!=0 && Math.abs(x)+Math.abs(y)==3;
     }
 }
