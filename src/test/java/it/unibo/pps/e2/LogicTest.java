@@ -29,9 +29,10 @@ public class LogicTest {
 
     @Test
     public void testInvalidKnightMove() {
-        knightPosX = 1;
-        knightPosY = 1;
-        assertFalse(logics.hasKnight(knightPosX, knightPosY));
+        int wrongNightPosX = 1;
+        int wrongKnightPosY = 1;
+        assertFalse(logics.hasKnight(wrongNightPosX, wrongKnightPosY));
+        assertTrue(logics.hasKnight(knightPosX, knightPosY));
     }
 
     @Test
