@@ -39,6 +39,7 @@ public class LogicTest {
         knightPosX = 2;
         knightPosY = 1;
         logics.hit(knightPosX, knightPosY);
+        assertFalse(logics.hit(knightPosX, knightPosY));
         assertTrue(logics.hasKnight(knightPosX, knightPosY));
     }
 
