@@ -8,16 +8,14 @@ import static org.junit.jupiter.api.Assertions.*;
 public class KnightTest {
     private Knight knight;
     private static final Pair<Integer, Integer> INITIAL_KNIGHT_POSITION = new Pair<>(0, 0);
-    private int knightNewPositionX;
-    private int knightNewPositionY;
     private Pair<Integer, Integer> knightNewPosition;
     Pair<Integer, Integer> wrongKnightNewPosition = new Pair<>(1 ,1);
 
     @BeforeEach
     void init() {
         knight = new KnightImpl(INITIAL_KNIGHT_POSITION);
-        knightNewPositionX = 2;
-        knightNewPositionY = 1;
+        int knightNewPositionX = 2;
+        int knightNewPositionY = 1;
         knightNewPosition = new Pair<>(knightNewPositionX, knightNewPositionY);
     }
 
